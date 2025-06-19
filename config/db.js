@@ -1,14 +1,15 @@
-const mysql = require('mysql');
+require('dotenv').config();
+const mysql = require('mysql2');
 
-const db = mysql.createConnection({
-  host: 'mysql.railway.internal',
-  port: 3306,                         // Railway usually uses 3306 for MySQL
-  user: 'root', // e.g., root or some generated username
-  password: 'xwnPQlaMnnTJlaulAUTAQKgtlrOYOhck',
-  database: 'railway'      // the database name Railway gave you
+const connection = mysql.createConnection({
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT || 3306,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME
 });
 
-db.connect((err) => {
+connection.connect((err) => {
   if (err) {
     console.error('MySQL connection error:', err);
     throw err;
@@ -16,5 +17,4 @@ db.connect((err) => {
   console.log('MySQL connected...');
 });
 
-module.exports = db;
-
+module.exports = connection;
