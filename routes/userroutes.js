@@ -1,8 +1,9 @@
+// backend/routes/userRoutes.js
 const express = require('express');
 const router = express.Router();
-const UserController = require('../controllers/usercontroller');
+const { registerUser, loginUser } = require('../controllers/userController');
 
-router.post('/register', UserController.register);
-router.post('/login', UserController.login);
+router.post('/register', registerUser);
+router.post('/login', loginUser);
 
 module.exports = router;

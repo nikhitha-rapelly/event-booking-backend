@@ -20,7 +20,6 @@ app.use('/api/bookings', bookingRoutes);
 
 const PORT = process.env.PORT || 5000;
 
-
 // Test route
 app.get('/', (req, res) => {
   res.send('Event Booking API Running');
